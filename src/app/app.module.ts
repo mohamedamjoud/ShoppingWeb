@@ -9,6 +9,7 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { ManageOrdersComponent } from './manage-orders/manage-orders.component';
 import { ManageProductsComponent } from './manage-products/manage-products.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [
