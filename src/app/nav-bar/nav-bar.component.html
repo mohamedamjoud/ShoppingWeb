@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">O</a>
+    <a class="navbar-brand" routerLink="/">O</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,17 +9,25 @@
         <li class="nav-item active">
           <a class="nav-link" routerLink="/cart">Shopping Cart<span class="sr-only">(current)</span></a>
         </li>
-        <li ngbDropdown class="nav-item dropdown">
+        <ng-template #anonymousUser>
+          <li class="nav-item">       
+            <a class="nav-link" routerLink="/login">login</a>
+          </li>
+        </ng-template>  
+        <li ngbDropdown class="nav-item dropdown" *ngIf="getUser().IsSignedIn else anonymousUser">
           <a ngbDropdownToggle class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Username
+             {{ getUser().UserName }} 
           </a>
           <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <!-- <a class="nav-link" routerLink="/posts">Posts</a> -->
-            <a ngbDropdownItem class="dropdown-item" routerLink="/my">My Orders</a>
-            <a ngbDropdownItem class="dropdown-item" routerLink="/orders">Manager Orders</a>
-            <a ngbDropdownItem class="dropdown-item" routerLink="/products">Manager Products</a>
-            <a ngbDropdownItem class="dropdown-item" routerLink="/login">login</a>
-            <a ngbDropdownItem class="dropdown-item" routerLink="#">Log Out</a>
+            <a *ngIf="getUser().IsSignedIn"
+            ngbDropdownItem class="dropdown-item" routerLink="/my">My Orders</a>
+            <a *ngIf="getUser().IsSignedIn"
+            ngbDropdownItem class="dropdown-item" routerLink="/orders">Manager Orders</a>
+            <a *ngIf="getUser().IsSignedIn"
+            ngbDropdownItem class="dropdown-item" routerLink="/products">Manager Products</a>
+            
+            <a *ngIf="getUser().IsSignedIn"
+            ngbDropdownItem class="dropdown-item" (click)="signOut()">Log Out</a>
           </div>
         </li>
       </ul>

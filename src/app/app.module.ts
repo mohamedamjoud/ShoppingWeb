@@ -10,7 +10,12 @@ import { ManageOrdersComponent } from './manage-orders/manage-orders.component';
 import { ManageProductsComponent } from './manage-products/manage-products.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { LoginComponent } from './login/login.component';
+import { CanActivateTeamService, Permissions } from './Security/can-activate-team.service';
+import { AuthenticationComponent } from './authentication/authentication.component';
+import { HttpClientModule } from '@angular/common/http';
+import { UserDto } from './dtos/userDto';
+import { DataService } from './services/data.service';
+import { AuthenticationService } from './services/authentication.service';
 
 @NgModule({
   declarations: [
@@ -21,14 +26,19 @@ import { LoginComponent } from './login/login.component';
     ManageOrdersComponent,
     ManageProductsComponent,
     NavBarComponent,
-    LoginComponent
+    AuthenticationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    CanActivateTeamService,
+    Permissions,
+    AuthenticationService
+  ],
   bootstrap: [
      AppComponent
   ]
