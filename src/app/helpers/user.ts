@@ -3,4 +3,6 @@ export  class User {
     public  static UserName = 'User Name';
     public  static Email: string;
     public  static IsSignedIn = false;
+    public  static IsAdmin = false;
+
 }

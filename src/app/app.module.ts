@@ -13,9 +13,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CanActivateTeamService, Permissions } from './Security/can-activate-team.service';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { HttpClientModule } from '@angular/common/http';
-import { UserDto } from './dtos/userDto';
-import { DataService } from './services/data.service';
 import { AuthenticationService } from './services/authentication.service';
+import { AdminAuthGuardService } from './security/admin-auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +36,8 @@ import { AuthenticationService } from './services/authentication.service';
   providers: [
     CanActivateTeamService,
     Permissions,
-    AuthenticationService
+    AuthenticationService,
+    AdminAuthGuardService
   ],
   bootstrap: [
      AppComponent

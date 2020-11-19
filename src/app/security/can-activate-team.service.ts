@@ -12,6 +12,7 @@ export class Permissions {
   constructor(private route: Router) {}
 
   canActivate(id: string, state: RouterStateSnapshot ): boolean {
+    // if (this.authService.isLoggedIn()) { return true; }
     if (User.IsSignedIn) { return true; }
     this.route.navigate(['/login'], { queryParams : { returnUrl : state.url}});
 

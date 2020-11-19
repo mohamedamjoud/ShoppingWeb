@@ -7,6 +7,7 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { CanActivateTeamService } from './Security/can-activate-team.service';
 import { AuthenticationComponent } from './authentication/authentication.component';
+import { AdminAuthGuardService } from './security/admin-auth-guard.service';
 
 const routes: Routes = [
   {
@@ -16,13 +17,13 @@ const routes: Routes = [
   {
     path: 'orders',
     component: ManageOrdersComponent,
-    canActivate: [CanActivateTeamService],
+    canActivate: [CanActivateTeamService, AdminAuthGuardService],
 
   },
   {
     path: 'products',
     component: ManageProductsComponent,
-    canActivate: [CanActivateTeamService],
+    canActivate: [CanActivateTeamService, AdminAuthGuardService],
 
   },
   {
