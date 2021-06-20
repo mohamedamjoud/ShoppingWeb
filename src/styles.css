@@ -1,3 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 
- body{ padding: 10 px ; } 
+ /* body{ padding: 10 px ; }  */
+
+ .form-control.ng-invalid.ng-touched{
+border: 2px red solid;
+}
+.container{
+    margin-top: 40px;
+}
+.btn{
+    margin-right: 5px;
+}
+.alert.alert-danger{
+    margin-top: 5px;
+
+}

@@ -24,7 +24,7 @@
             <a *ngIf="getUser().IsSignedIn && getUser().IsAdmin"
             ngbDropdownItem class="dropdown-item" routerLink="/orders" >Manager Orders</a>
             <a *ngIf="getUser().IsSignedIn && getUser().IsAdmin"
-            ngbDropdownItem class="dropdown-item" routerLink="/products" >Manager Products</a>
+            ngbDropdownItem class="dropdown-item" routerLink="/admin/products">Manager Products</a>
             
             <a *ngIf="getUser().IsSignedIn"
             ngbDropdownItem class="dropdown-item" (click)="signOut()">Log Out</a>

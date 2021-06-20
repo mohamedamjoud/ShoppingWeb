@@ -2,12 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ManageOrdersComponent } from './manage-orders/manage-orders.component';
-import { ManageProductsComponent } from './manage-products/manage-products.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { CanActivateTeamService } from './Security/can-activate-team.service';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { AdminAuthGuardService } from './security/admin-auth-guard.service';
+import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { ManageProductsComponent } from './admin/manage-products/manage-products.component';
 
 const routes: Routes = [
   {
@@ -21,10 +22,14 @@ const routes: Routes = [
 
   },
   {
-    path: 'products',
+    path: 'admin/products',
     component: ManageProductsComponent,
-    canActivate: [CanActivateTeamService, AdminAuthGuardService],
+    // canActivate: [CanActivateTeamService, AdminAuthGuardService],
 
+  },
+  {
+    path: 'admin/products/new',
+    component: ProductFormComponent
   },
   {
     path: 'my',

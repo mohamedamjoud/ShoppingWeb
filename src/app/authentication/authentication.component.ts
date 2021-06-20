@@ -12,7 +12,7 @@ import { UserDto, UserForAuthenticationDto } from '../dtos/userDto';
 export class AuthenticationComponent implements OnInit {
 
   constructor(
-    ngZone: NgZone,
+    private ngZone: NgZone,
     private router: Router,
     private authenticationService: AuthenticationService) {
     window['onSignIn'] = (user) => ngZone.run(() => this.onSignIn(user));

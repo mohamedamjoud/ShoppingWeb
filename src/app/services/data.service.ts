@@ -23,11 +23,22 @@ export class DataService {
     protected http: HttpClient,
     protected serviceName: string,
     ) {
-      this.url = this.url.concat (serviceName);
+      this.url = this.url.concat(serviceName);
     }
 
-    get() {
-      return this.http.get(this.url, this.httpOptions)
+    getAllPagination(page: number, pageSize: number) {
+      return this.http.get(
+        this.url + '?page=' + page + '&pageSize=' + pageSize,
+        this.httpOptions)
+      .pipe(
+         map(response => response),
+         catchError(this.handleError)
+      );
+    }
+
+    getAll() {
+      return this.http.get(
+        this.url, this.httpOptions)
       .pipe(
          map(response => response),
          catchError(this.handleError)
@@ -56,10 +67,22 @@ export class DataService {
       );
     }
 
-    delete(body: any, header: HttpHeaders) {
+    delete(body: any) {
       return this.http.delete(this.url + '/' + body.id, this.httpOptions)
       .pipe(
         catchError(this.handleError)
+      );
+    }
+
+    get(headers: HttpHeaders) {
+      return this.http.get(this.url,{
+        headers: headers
+        .append('accept', 'application/json')
+        .append('content-Type', 'application/json')
+      })
+      .pipe(
+         map(response => response),
+         catchError(this.handleError)
       );
     }
 

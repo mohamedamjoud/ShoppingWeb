@@ -1,0 +1,59 @@
+<div class="form-group">
+  <a routerLink="/admin/products/new" class="btn btn-primary form-control">Add new product</a>
+</div>
+
+<div class="form-group">
+  <input 
+  type="text" 
+  placeholder="Search" 
+  class="form-control" 
+  id="searchName" 
+  name="searchName" 
+  [(ngModel)]="searchName">
+</div>
+<!-- <p class="card-text">{{products|json}}</p> -->
+<table class="table table-borderless">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Price</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of (productsPagination.data | productNameFilter : searchName )">
+        <td>{{product.title}}</td>
+        <td>{{product.price}}</td>
+        {{product.id}}
+        <td>
+          <button class="btn btn-primary" (click)="Edit(product.id)">Edit</button>
+          <button class="btn btn-danger" (click)="delete(product.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+</table>
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link" (click)="getFirstPage()" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" (click)="getPreviousPage()" aria-label="Next">
+        <span aria-hidden="true">&lt;</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link">{{productsPagination.currentPage}} / {{productsPagination.lastPage}}</a></li>    
+    <li class="page-item">
+      <a class="page-link" (click)="getNextPage()" aria-label="Next">
+        <span aria-hidden="true">&gt;</span>
+      </a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" (click)="getLastPage()" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
