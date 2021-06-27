@@ -51,6 +51,7 @@ export class ManageProductsComponent implements OnInit {
   delete(id : number) {
     this.productService.delete(id).subscribe((response : any) => {
       console.log(response);
+      
       this.getProducts(this.productsPagination.currentPage, this.productsPagination.pageSize);
     });
 
